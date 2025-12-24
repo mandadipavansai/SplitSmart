@@ -7,17 +7,15 @@ exports.calculateGroupBalances = async (groupId) => {
   
   if (!group) throw new Error('Group not found');
 
-  // 1. Calculate Net Balance for each member
+
   const balances = {}; 
-  // Initialize 0 for everyone
+
   group.members.forEach(m => balances[m._id.toString()] = 0);
 
   expenses.forEach(expense => {
     const payerId = expense.paidBy.toString();
     
-    // Payer gets POSITIVE (They are owed money)
-    // Note: We only add the amount *others* consumed. 
-    // BUT simpler logic: Payer +Amount, Consumers -SplitAmount.
+  
     balances[payerId] += expense.amount;
 
     expense.splits.forEach(split => {
@@ -26,7 +24,7 @@ exports.calculateGroupBalances = async (groupId) => {
     });
   });
 
-  // 2. Separate into Debtors (-) and Creditors (+)
+
   let debtors = [];
   let creditors = [];
 
@@ -36,35 +34,35 @@ exports.calculateGroupBalances = async (groupId) => {
     if (net > 0.01) creditors.push({ memberId, amount: net });
   }
 
-  // Sort to optimize matching
-  debtors.sort((a, b) => a.amount - b.amount); // Ascending (-100, -50)
-  creditors.sort((a, b) => b.amount - a.amount); // Descending (100, 50)
 
-  // 3. Greedy Matching (Simplification)
+  debtors.sort((a, b) => a.amount - b.amount); 
+  creditors.sort((a, b) => b.amount - a.amount); 
+
+
   const settlements = [];
-  let i = 0; // debtor index
-  let j = 0; // creditor index
+  let i = 0; 
+  let j = 0; 
 
   while (i < debtors.length && j < creditors.length) {
     let debtor = debtors[i];
     let creditor = creditors[j];
 
-    // The amount to settle is the minimum of what debtor owes vs what creditor is owed
+
     let amount = Math.min(Math.abs(debtor.amount), creditor.amount);
     amount = parseFloat(amount.toFixed(2));
 
-    // Record the settlement
+
     settlements.push({
       from: debtor.memberId,
       to: creditor.memberId,
       amount
     });
 
-    // Update remaining balances
+
     debtor.amount += amount;
     creditor.amount -= amount;
 
-    // Move pointers if settled
+
     if (Math.abs(debtor.amount) < 0.01) i++;
     if (creditor.amount < 0.01) j++;
   }

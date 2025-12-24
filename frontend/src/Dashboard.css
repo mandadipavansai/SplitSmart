@@ -2,7 +2,7 @@
 * { box-sizing: border-box; }
 .dashboard-container { display: flex; height: 100vh; width: 100vw; background-color: var(--bg-dark); overflow: hidden; color: var(--text-main); font-family: 'Inter', sans-serif; }
 
-/* SIDEBAR */
+
 .sidebar { width: 260px; background: var(--sidebar-bg); border-right: 1px solid var(--glass-border); display: flex; flex-direction: column; padding: 1.5rem; flex-shrink: 0; }
 .brand { font-size: 1.6rem; font-weight: 800; color: white; margin-bottom: 2rem; } .brand span { color: var(--primary); }
 .groups-header { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.75rem; font-weight: 700; margin-bottom: 1rem; }
@@ -15,7 +15,7 @@
 .user-profile { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; }
 .logout-btn { background: transparent; border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 6px; border-radius: 6px; cursor: pointer; }
 
-/* MAIN CONTENT */
+
 .main-content { flex: 1; padding: 2rem; overflow-y: auto; background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 40%); }
 .empty-state { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); }
 .top-header { margin-bottom: 2rem; }
@@ -23,7 +23,7 @@
 .group-meta { color: var(--text-muted); font-size: 0.9rem; margin-top: 5px; }
 .content-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem; }
 
-/* PANELS & COLLAPSIBLE */
+
 .panel { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px); }
 .panel-title { font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
 .collapsible-panel { transition: all 0.3s ease; overflow: hidden; padding-bottom: 0; }
@@ -31,13 +31,13 @@
 .collapsible-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, opacity 0.3s ease; opacity: 0; }
 .collapsible-panel.open .collapsible-content { max-height: 300px; opacity: 1; padding-bottom: 1.5rem; border-top: 1px solid var(--glass-border); overflow-y: auto; }
 
-/* MANAGE LIST */
+
 .members-manage-list { margin-top: 1rem; }
 .manage-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.9rem; }
 .icon-btn-danger { background: none; border: none; color: #ef4444; cursor: pointer; opacity: 0.7; transition: 0.2s; }
 .icon-btn-danger:hover { opacity: 1; transform: scale(1.1); }
 
-/* INPUTS & BUTTONS */
+
 .dash-input { width: 100%; padding: 12px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--glass-border); border-radius: 8px; color: white; outline: none; transition: 0.2s; }
 .dash-input:focus { border-color: var(--primary); background: rgba(15, 23, 42, 0.9); }
 .dash-btn { background: linear-gradient(135deg, var(--primary), #2563eb); color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: transform 0.2s; }
@@ -45,7 +45,7 @@
 .tiny-input { width: 70px; padding: 5px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); border-radius: 5px; color: white; text-align: right; outline: none; }
 .tiny-input:focus { border-color: var(--primary); }
 
-/* SPLIT UI */
+
 .split-type-container { display: flex; gap: 10px; margin-bottom: 1rem; background: rgba(0,0,0,0.2); padding: 4px; border-radius: 8px; }
 .type-btn { flex: 1; padding: 8px; border-radius: 6px; color: var(--text-muted); font-size: 0.8rem; font-weight: 600; cursor: pointer; text-align: center; }
 .type-btn:hover { color: white; background: rgba(255,255,255,0.05); }
@@ -53,7 +53,7 @@
 .members-split-list { background: rgba(15, 23, 42, 0.4); border: 1px solid var(--glass-border); border-radius: 10px; padding: 1rem; margin-bottom: 1rem; max-height: 250px; overflow-y: auto; }
 .member-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
-/* DEBTS */
+
 .debt-card { background: rgba(0, 0, 0, 0.25); padding: 12px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-left: 3px solid #8b5cf6; }
 .amount-badge { background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 12px; font-weight: 700; font-size: 0.85rem; }
 

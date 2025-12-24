@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import './App.css'; // This imports your beautiful CSS
+import './App.css';
 
 function App() {
   return (

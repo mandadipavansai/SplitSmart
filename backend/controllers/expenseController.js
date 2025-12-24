@@ -4,11 +4,11 @@ exports.addExpense = async (req, res) => {
   try {
     const { description, amount, group, paidBy, splitType, splits } = req.body;
 
-    // Validation: Total split must match expense amount
+
     let totalCalculated = 0;
     splits.forEach(s => totalCalculated += parseFloat(s.amount));
 
-    // Allow small float error (0.1)
+
     if (Math.abs(totalCalculated - amount) > 0.1) {
       return res.status(400).json({ msg: `Splits ($${totalCalculated}) do not match Total ($${amount})` });
     }

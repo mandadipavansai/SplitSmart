@@ -12,15 +12,15 @@ const Dashboard = () => {
   const [groups, setGroups] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState(null);
   
-  // Data State
+
   const [balances, setBalances] = useState([]);
   const [expenses, setExpensesHistory] = useState([]);
 
-  // UI State
+
   const [isAddMemberOpen, setIsAddMemberOpen] = useState(false);
   const [newMemberName, setNewMemberName] = useState('');
 
-  // Forms
+
   const [desc, setDesc] = useState('');
   const [totalAmount, setTotalAmount] = useState('');
   const [splitType, setSplitType] = useState('EQUAL'); 
@@ -78,11 +78,11 @@ const Dashboard = () => {
     setMemberSplits(prev => ({ ...prev, [memberId]: value }));
   };
 
-  // --- ADD MEMBER LOGIC ---
+
   const handleAddMember = async () => {
     if (!newMemberName.trim()) return;
     
-    // Frontend Duplicate Check
+
     const exists = selectedGroup.members.find(m => m.name.toLowerCase() === newMemberName.trim().toLowerCase());
     if (exists) return toast.error("Member already exists!");
 
@@ -96,7 +96,7 @@ const Dashboard = () => {
     }
   };
 
-  // --- REMOVE MEMBER LOGIC ---
+
   const handleRemoveMember = async (memberId) => {
     if(!confirm("Remove this member?")) return;
     try {
@@ -124,7 +124,7 @@ const Dashboard = () => {
         sum += val;
         return { memberId: m._id, amount: val };
       });
-      if (Math.abs(sum - amount) > 0.1) return toast.error(`Total mismatch! Sum: ₹${sum}`); // <--- Rupee
+      if (Math.abs(sum - amount) > 0.1) return toast.error(`Total mismatch! Sum: ₹${sum}`); 
     } else if (splitType === 'PERCENT') {
       let sum = 0;
       finalSplits = members.map(m => {
@@ -151,7 +151,7 @@ const Dashboard = () => {
   };
 
   const handleSettleUp = async (fromMemberId, toMemberId, amount) => {
-    if (!confirm(`Settle ₹${amount}?`)) return; // <--- Rupee
+    if (!confirm(`Settle ₹${amount}?`)) return; 
     try {
       await addExpense({
         description: 'Settlement',
@@ -205,7 +205,7 @@ const Dashboard = () => {
               {/* --- LEFT COLUMN --- */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 
-                {/* 1. COLLAPSIBLE ADD MEMBER */}
+                {}
                 <div className={`panel collapsible-panel ${isAddMemberOpen ? 'open' : ''}`}>
                   <div className="panel-header-row" onClick={() => setIsAddMemberOpen(!isAddMemberOpen)}>
                     <div className="panel-title" style={{ marginBottom: 0 }}>

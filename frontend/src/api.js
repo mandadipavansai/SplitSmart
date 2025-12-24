@@ -16,8 +16,8 @@ export const addExpense = (data) => API.post('/expenses', data);
 export const getExpenses = (groupId) => API.get(`/expenses/${groupId}`);
 export const getBalances = (groupId) => API.get(`/balances/${groupId}`);
 
-// Members
+
 export const addMember = (groupId, name) => API.post(`/groups/${groupId}/members`, { name });
-export const removeMember = (groupId, memberId) => API.delete(`/groups/${groupId}/members/${memberId}`); // <--- NEW
+export const removeMember = (groupId, memberId) => API.delete(`/groups/${groupId}/members/${memberId}`);
 
 export default API;
